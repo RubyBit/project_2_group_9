@@ -1,0 +1,24 @@
+Column Name,Description,Interpretation,Calculation Method,Unit
+repo_name,Repository name,The short name of the repository,Direct from GitHub API,Text
+repo_full_name,Full repository name with organization,The full name including the organization (e.g. dataoverheid/repo-name),Direct from GitHub API,Text
+repo_age_days,Repository age in days,How long the repository has existed; older repositories with active maintenance suggest sustainability,Current Date - Repository Creation Date,Days
+repo_age_months,Repository age in months,Repository age converted to months for easier analysis,repo_age_days / 30.44 (average days in a month),Months
+commit_frequency_per_month,Average number of commits per month,Higher commit frequency indicates active development; low frequency may suggest abandonment,Total Commits / Repository Age (in months),Commits per month
+avg_issue_resolution_time_hours,Average time to resolve issues,Faster issue resolution shows active maintenance and responsiveness,Average time between issue opening & closing dates,Hours
+open_issues_percentage,Percentage of issues that remain open,High percentage may indicate poor maintenance or overwhelming community interest,Open Issues / (Open + Closed Issues) * 100,Percentage
+last_commit_date,Date of the most recent commit,Indicates when the repository was last updated,Direct from GitHub API,Date
+days_since_last_commit,Days since the most recent commit,Repositories not updated recently may be inactive or abandoned,Current Date - Last Commit Date,Days
+num_contributors,Number of unique contributors,More contributors suggests broader engagement and better sustainability,Count of unique commit authors,Count
+num_forks,Number of repository forks,Higher fork count indicates other developers find the project useful,Direct from GitHub API,Count
+num_stars,Number of repository stars,"While not direct sustainability metric, higher stars suggest popularity and interest",Direct from GitHub API,Count
+merged_pr_percentage,Percentage of pull requests that were merged,High percentage suggests active governance and collaboration,Merged PRs / Total PRs * 100,Percentage
+external_pr_percentage,Percentage of pull requests from external contributors,More external contributions indicate wider support base,External PRs / Total PRs * 100,Percentage
+has_readme,Presence of README file,Basic documentation that attracts contributors,Boolean check for file existence,Boolean (True/False)
+has_license,Presence of LICENSE file,Clear licensing is essential for open source sustainability,Boolean check for file existence,Boolean (True/False)
+has_contributing,Presence of CONTRIBUTING.md file,Guidelines for contribution improve community participation,Boolean check for file existence,Boolean (True/False)
+has_cicd,Presence of CI/CD pipelines,Continuous Integration tools indicate automated maintenance,Check for GitHub Actions workflows,Boolean (True/False)
+total_commits,Total number of commits,Raw count of all commits made to the repository,Count from GitHub API,Count
+open_issues,Number of open issues,Current open issues requiring attention,Count from GitHub API,Count
+closed_issues,Number of closed issues,Historical resolved issues,Count from GitHub API,Count
+open_prs,Number of open pull requests,Current proposed changes awaiting review,Count from GitHub API,Count
+closed_prs,Number of closed pull requests,Historical proposed changes that were processed,Count from GitHub API,Count

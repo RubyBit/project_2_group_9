@@ -1,0 +1,22 @@
+repo_name,repo_full_name,repo_age_days,repo_age_months,commit_frequency_per_month,avg_issue_resolution_time_hours,open_issues_percentage,last_commit_date,days_since_last_commit,num_contributors,num_forks,num_stars,merged_pr_percentage,external_pr_percentage,has_readme,has_license,has_contributing,has_cicd,total_commits,open_issues,closed_issues,open_prs,closed_prs
+donl_d7,dataoverheid/donl_d7,3527,115.86727989487515,0.06041394953218033,,0.0,2016-12-22 10:33:02,3002,3,2,3,0.0,0.0,True,False,False,False,7,0,0,0,0
+ckanext-donl,dataoverheid/ckanext-donl,3477,114.22470433639947,0.01750934713833765,,0.0,2016-12-22 10:50:32,3002,2,0,3,0.0,0.0,True,False,False,False,2,0,0,0,0
+ckan_settings,dataoverheid/ckan_settings,3275,107.58869908015768,0.00929465648854962,,0.0,2016-03-24 09:58:02,3275,1,0,0,0.0,0.0,True,False,False,False,1,0,0,0,0
+donl_ngr,dataoverheid/donl_ngr,2996,98.42312746386334,0.03048064085447263,14.212777777777777,0.0,2017-01-18 08:07:56,2975,2,0,0,0.0,0.0,True,False,False,False,3,0,1,0,0
+donl_cbs,dataoverheid/donl_cbs,2996,98.42312746386334,0.020320427236315088,,0.0,2016-12-29 08:04:35,2995,2,0,0,0.0,0.0,True,False,False,False,2,0,0,0,0
+donl_dpf,dataoverheid/donl_dpf,2996,98.42312746386334,0.020320427236315088,,0.0,2016-12-28 08:17:01,2996,2,0,0,0.0,0.0,True,False,False,False,2,0,0,0,0
+DCAT-AP-NL,dataoverheid/DCAT-AP-NL,2813,92.4113009198423,0.2597084962673303,,100.0,2018-11-21 12:24:21,2303,4,0,2,0.0,0.0,True,False,False,False,24,1,0,0,0
+waardelijsten,dataoverheid/waardelijsten,2812,92.3784494086728,0.010825035561877668,810.7213888888889,0.0,2017-07-18 12:10:39,2794,1,0,0,0.0,0.0,False,False,False,False,1,0,1,0,0
+ckanext-dataoverheid,dataoverheid/ckanext-dataoverheid,2081,68.36399474375821,0.27792407496395966,197.80171296296297,7.6923076923076925,2020-09-15 15:23:18,1639,2,1,0,91.66666666666666,100.0,True,False,True,False,19,1,12,1,11
+dcat-ap-donl-waardelijsten,dataoverheid/dcat-ap-donl-waardelijsten,1773,58.24572930354796,0.13734912577552172,272.57055555555553,25.0,2022-10-04 11:55:46,890,1,1,0,66.66666666666666,100.0,True,False,False,False,8,1,3,1,2
+ckan-metadata-export,dataoverheid/ckan-metadata-export,1764,57.95006570302234,0.0690249433106576,58.316944444444445,50.0,2023-05-25 09:45:25,657,2,0,0,50.0,100.0,True,False,False,False,4,1,1,1,1
+donlsync-mappings,dataoverheid/donlsync-mappings,1710,56.17608409986859,0.7476491228070176,283.3004222222222,0.0,2024-08-21 11:15:05,203,3,0,1,100.0,100.0,True,False,False,False,42,0,25,0,19
+donlsync,dataoverheid/donlsync,1681,55.22339027595269,0.1448661511005354,1088.4717460317459,22.22222222222222,2022-06-16 10:07:54,1000,2,0,0,77.77777777777779,100.0,True,False,True,False,8,2,7,2,7
+solr-configsets,dataoverheid/solr-configsets,1632,53.613666228646515,0.7647303921568628,43.90584967320262,0.0,2023-07-11 12:17:01,610,2,1,0,100.0,100.0,True,False,True,False,41,0,17,0,17
+solr-index-tasks,dataoverheid/solr-index-tasks,1622,53.285151116951376,0.5817755856966709,4.305092592592593,0.0,2022-05-30 10:02:18,1017,2,0,0,100.0,100.0,True,False,True,False,31,0,12,0,12
+drupal-web,dataoverheid/drupal-web,1604,52.69382391590013,0.03795511221945137,,0.0,2021-05-26 09:06:31,1386,1,0,1,0.0,0.0,True,False,False,False,2,0,0,0,0
+dcat-ap-donl,dataoverheid/dcat-ap-donl,1247,40.9658344283837,8.44606255012029,3733.2875617283953,32.075471698113205,2022-11-24 13:56:18,839,4,1,2,75.0,100.0,True,False,False,True,346,17,36,2,6
+koop_piwik_pro,dataoverheid/koop_piwik_pro,1052,34.55978975032851,0.31828897338403045,,0.0,2024-03-27 10:15:16,350,1,0,0,0.0,0.0,False,False,False,False,11,0,0,0,0
+readthedocs-dcat-ap-donl-1.1,dataoverheid/readthedocs-dcat-ap-donl-1.1,1030,33.83705650459921,0.02955339805825243,,0.0,2022-05-17 09:14:59,1030,0,0,0,0.0,0.0,False,False,False,False,1,0,0,0,0
+readthedocs-ckanext-dcatdonl,dataoverheid/readthedocs-ckanext-dcatdonl,1030,33.83705650459921,0.02955339805825243,,0.0,2022-05-17 09:20:38,1030,0,0,0,0.0,0.0,False,False,False,False,1,0,0,0,0
+readthedocs-dcat-ap-nl-1.1,dataoverheid/readthedocs-dcat-ap-nl-1.1,1030,33.83705650459921,0.02955339805825243,,0.0,2022-05-17 09:04:02,1030,0,0,0,0.0,0.0,False,False,False,False,1,0,0,0,0
