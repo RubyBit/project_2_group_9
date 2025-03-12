@@ -1,9 +1,9 @@
 import requests
 import pandas as pd
 import datetime
-from tqdm import tqdm
 import time
 import os
+from tqdm import tqdm
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -12,9 +12,6 @@ load_dotenv()
 # GitHub API token (create one at https://github.com/settings/tokens)
 # Store this in a .env file as GITHUB_TOKEN=your_token_here
 TOKEN = os.getenv('GITHUB_TOKEN')
-
-# Organization to scrape
-ORG = 'dataoverheid'
 
 # Headers for GitHub API requests
 headers = {
@@ -32,7 +29,7 @@ def get_repos(org):
             headers=headers
         )
         if response.status_code != 200:
-            print(f"Error fetching repos: {response.status_code}")
+            print(f"Error fetching repos for {org}: {response.status_code}")
             print(response.json())
             break
         
@@ -218,12 +215,12 @@ def get_workflows(repo_full_name):
         return []
     return response.json().get('workflows', [])
 
-def calculate_metrics(repos):
+def calculate_metrics(repos, org_name, gov_id):
     """Calculate sustainability metrics for each repository"""
     metrics = []
     current_date = datetime.datetime.now()
     
-    for repo in tqdm(repos, desc="Processing repositories"):
+    for repo in tqdm(repos, desc=f"Processing {org_name} repositories"):
         repo_full_name = repo['full_name']
         repo_created_at = datetime.datetime.strptime(repo['created_at'], '%Y-%m-%dT%H:%M:%SZ')
         repo_age_days = (current_date - repo_created_at).days
@@ -269,6 +266,8 @@ def calculate_metrics(repos):
         
         # Gather metrics
         repo_metrics = {
+            'government': gov_id,
+            'org_name': org_name,
             'repo_name': repo['name'],
             'repo_full_name': repo_full_name,
             
@@ -306,25 +305,73 @@ def calculate_metrics(repos):
         
     return metrics
 
-def main():
-    print(f"Fetching repositories for {ORG}...")
-    repos = get_repos(ORG)
+def load_existing_metrics(file_path):
+    """Load existing metrics from a CSV file if it exists"""
+    if os.path.exists(file_path):
+        return pd.read_csv(file_path)
+    return None
+
+def save_metrics(metrics, file_path):
+    """Save metrics to a CSV file"""
+    # Create DataFrame from new metrics
+    new_df = pd.DataFrame(metrics)
+    
+    # Check if file already exists and load it
+    existing_df = load_existing_metrics(file_path)
+    
+    if existing_df is not None:
+        # Combine existing and new data
+        combined_df = pd.concat([existing_df, new_df], ignore_index=True)
+        # Remove duplicates based on repo_full_name and government
+        combined_df = combined_df.drop_duplicates(subset=['repo_full_name', 'government'], keep='last')
+        combined_df.to_csv(file_path, index=False)
+        return len(new_df), len(combined_df)
+    else:
+        # If file doesn't exist, just save the new data
+        new_df.to_csv(file_path, index=False)
+        return len(new_df), len(new_df)
+
+def process_organization(org_name, gov_id, output_file):
+    """Process a single organization and add to the combined dataset"""
+    print(f"Fetching repositories for {org_name}...")
+    repos = get_repos(org_name)
     print(f"Found {len(repos)} repositories.")
     
-    print("Calculating sustainability metrics...")
-    metrics = calculate_metrics(repos)
+    print(f"Calculating sustainability metrics for {org_name}...")
+    metrics = calculate_metrics(repos, org_name, gov_id)
     
     # Create data directory if it doesn't exist
     if not os.path.exists('data'):
         os.makedirs('data')
         print("Created 'data' directory")
     
-    # Create DataFrame and save to CSV in data directory
-    df = pd.DataFrame(metrics)
-    output_file = f"data/{ORG}_sustainability_metrics_{datetime.datetime.now().strftime('%Y%m%d')}.csv"
-    df.to_csv(output_file, index=False)
+    # Save metrics to the combined file
+    new_count, total_count = save_metrics(metrics, output_file)
+    print(f"Added {new_count} repositories from {org_name} to dataset. Total repositories: {total_count}")
     
-    print(f"Metrics saved to {output_file}")
+    return metrics
+
+def main():
+    """Main function to process organizations"""
+    # Define output file path
+    output_file = "data/government_repos_sustainability_metrics.csv"
+    
+    # Define organizations to scrape
+    # Format: [organization_name, government_identifier]
+    organizations = [
+        ["dataoverheid", "netherlands"],
+        ["usagov", "usa"]
+        # Add more organizations here as needed
+        # ["govuk", "uk"],
+        # ["canada-ca", "canada"],
+        # etc.
+    ]
+    
+    # Process each organization
+    for org_name, gov_id in organizations:
+        process_organization(org_name, gov_id, output_file)
+    
+    print(f"All metrics saved to {output_file}")
 
 if __name__ == "__main__":
     main()
