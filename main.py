@@ -312,24 +312,39 @@ def load_existing_metrics(file_path):
     return None
 
 def save_metrics(metrics, file_path):
-    """Save metrics to a CSV file"""
-    # Create DataFrame from new metrics
+    """Append new metrics to the existing CSV file instead of overwriting"""
     new_df = pd.DataFrame(metrics)
-    
-    # Check if file already exists and load it
-    existing_df = load_existing_metrics(file_path)
-    
-    if existing_df is not None:
-        # Combine existing and new data
+
+    # If the file exists, append data without overwriting
+    if os.path.exists(file_path):
+        existing_df = pd.read_csv(file_path)
         combined_df = pd.concat([existing_df, new_df], ignore_index=True)
-        # Remove duplicates based on repo_full_name and government
-        combined_df = combined_df.drop_duplicates(subset=['repo_full_name', 'government'], keep='last')
+        combined_df.drop_duplicates(subset=['repo_full_name', 'government'], keep='last', inplace=True)
         combined_df.to_csv(file_path, index=False)
-        return len(new_df), len(combined_df)
     else:
-        # If file doesn't exist, just save the new data
+        # If the file doesn’t exist, create it
         new_df.to_csv(file_path, index=False)
-        return len(new_df), len(new_df)
+
+    return len(new_df), len(new_df) 
+
+    # """Save metrics to a CSV file"""
+    # # Create DataFrame from new metrics
+    # new_df = pd.DataFrame(metrics)
+    
+    # # Check if file already exists and load it
+    # existing_df = load_existing_metrics(file_path)
+    
+    # if existing_df is not None:
+    #     # Combine existing and new data
+    #     combined_df = pd.concat([existing_df, new_df], ignore_index=True)
+    #     # Remove duplicates based on repo_full_name and government
+    #     combined_df = combined_df.drop_duplicates(subset=['repo_full_name', 'government'], keep='last')
+    #     combined_df.to_csv(file_path, index=False)
+    #     return len(new_df), len(combined_df)
+    # else:
+    #     # If file doesn't exist, just save the new data
+    #     new_df.to_csv(file_path, index=False)
+    #     return len(new_df), len(new_df)
 
 def process_organization(org_name, gov_id, output_file):
     """Process a single organization and add to the combined dataset"""
@@ -359,12 +374,16 @@ def main():
     # Define organizations to scrape
     # Format: [organization_name, government_identifier]
     organizations = [
-        ["dataoverheid", "netherlands"],
-        ["usagov", "usa"]
-        # Add more organizations here as needed
-        # ["govuk", "uk"],
-        # ["canada-ca", "canada"],
-        # etc.
+        # Netherlands
+        #["dataoverheid", "netherlands"],
+        # USA  
+        #["usagov", "usa"],   
+        # Germany            
+        #["opencode18", "germany"],
+        # France
+        #["etalab", "france"] 
+        # Greece     
+        ["govgr", "greece"]              
     ]
     
     # Process each organization
