@@ -381,9 +381,9 @@ def main():
         # Germany            
         #["opencode18", "germany"],
         # France
-        #["etalab", "france"] 
+        ["etalab", "france"] 
         # Greece     
-        ["govgr", "greece"]              
+        #["govgr", "greece"]              
     ]
     
     # Process each organization
