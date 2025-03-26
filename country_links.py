@@ -113,7 +113,10 @@ def main():
     if platform.lower() == "github":
         orgs = [
             ("USA", "usagov"),
-            ("Greece", "eellak")
+            ("Netherlands", "dataoverheid"),
+            ("Greece", "eellak"),
+            ("France", "etalab"),
+            ("Germany", "opencode18")
             # Add more GitHub orgs as needed
         ]
     elif platform.lower() == "gitlab":

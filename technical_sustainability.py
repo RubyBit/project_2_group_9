@@ -872,6 +872,12 @@ def analyze_repository(repo_url, target_dir):
     """
     if clone_repo(repo_url, target_dir):
         files = get_code_files(target_dir)
+        
+        # Check if there are any code files
+        if not files:
+            print(f"No code files found in repository: {repo_url}")
+            return None
+        
         code_analysis = analyze_code_patterns(files)
         complexity_analysis = calculate_cyclomatic_complexity(target_dir)
         dependency_analysis = analyze_dependency_graph(target_dir)
@@ -907,7 +913,14 @@ if __name__ == "__main__":
     
     # Process each repository
     results = []
+    country_repo_count = Counter()
+    
     for i, repo_info in enumerate(repos):
+        country = repo_info['country']
+        
+        if country_repo_count[country] >= 30:
+            continue
+        
         print(f"Processing repository {i+1}/{len(repos)}: {repo_info['repo_link']}")
         
         # Create a unique temporary directory for each repository
@@ -938,12 +951,9 @@ if __name__ == "__main__":
                 
                 # Add to results collection
                 results.append(analysis)
+                country_repo_count[country] += 1
             else:
                 print(f"Failed to analyze repository: {repo_info['repo_link']}")
-        
-        # process 20 repositories for testing
-        if i == 20:
-            break
     
     # Save combined results
     combined_file_path = os.path.join(output_dir, "all_results.json")
