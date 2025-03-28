@@ -18,6 +18,21 @@ Sustainability in software engineering is crucial when it comes to reducing the 
 
 # Solution description
 
+
+## Social Sustainability in Government Open Source Software
+Ensuring that government-developed software can achieve long-term impact, it must demonstrate social sustainability. Social sustainability includes that the software should be maintainable, accessible, inclusive, and open to collaboration over time.  In order to make it easier to assess how different government-software projects perform in terms of social sustainability, we collected various metrics from the GitHub repositories of the projects for our dataset. Although these metrics might be highly technical attributes, they also pose as indicators for social sustainability, primarily around openness, community involvement, accessibility, and long-term maintainability. Below, a table is provided that outlines the metrics that we extracted from the government repositories, together with their interpretation from an social sustainability perspective.
+
+
+| **Collected Metric**                       | **CSV Metric Name(s)**                                   | **Social Sustainability Relevance**                                                                 |
+|-------------------------------------------|-----------------------------------------------------------|------------------------------------------------------------------------------------------------------|
+| Development history           | `total_commits`, `repo_age_months`                        | Indicates openness, transparency and activeness of the repository; this is essential for understanding project evolution and collaboration. |
+| Number and diversity of contributors      | `num_contributors`, `external_pr_percentage`              | Indicates whether development is centralized or open to the community; more diverse developers indicate accessibility. |
+| Commit activity / most recent commit          | `commit_frequency_per_month`, `days_since_last_commit`    | Indicates if the repository is still being actively used and whether the project has long-term maintainability 
+| Documentation (README, requirements, etc) | `has_readme`, `has_contributing`, `has_license`           | Enables understandability of the reposptory and accesibility of easy onboarding; this supports knowledge sharing.                                 |
+| Buildability of the software              | `has_cicd`                                                | Ensures others can reuse or improve the code; this is a basis requirement for sustainable use of projects.                 |
+| Open issues and pull requests          | `open_issues`, `closed_issues`, `merged_pr_percentage`    | Indicate collaboration, openess to feedback, and contributions by the community                          |
+
+
 ## Streamlit
 
 ## Data analysis
