@@ -32,6 +32,7 @@ Ensuring that government-developed software can achieve long-term impact, it mus
 | Buildability of the software              | `has_cicd`                                                | Ensures others can reuse or improve the code; this is a basis requirement for sustainable use of projects.                 |
 | Open issues and pull requests          | `open_issues`, `closed_issues`, `merged_pr_percentage`    | Indicate collaboration, openess to feedback, and contributions by the community                          |
 
+We examined these metrics for multiple repositories across various countries, aiming to map the technical state of the government repositories. Additionally, we aimed to demonstrate the social sustainability patterns, such as how accessible, inclusive, and maintainable these systems are over time. With these insights, governments can more easily understand their strenghts and weaknesses of their software projects practices. Identifying areas of improvement will be simlpified, together with promoting a more inclusive and transparent digital infrastructure. Moreover, this dataset gives researchers access to a structured and clear data that supports the study of social sustainability in government open-source software. This enables deeper analysis of development practices, policy impacts, and comparison in practices between various countries.
 
 ## Streamlit
 
