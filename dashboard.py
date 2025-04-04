@@ -4,7 +4,6 @@ import plotly
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
-from streamlit_lottie import st_lottie
 import requests
 import numpy as np
 
